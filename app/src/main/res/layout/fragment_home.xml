@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black"
+    tools:context=".HomeFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/image_home_rv_item_one" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Results could not be loaded"
+            app:layout_constraintBottom_toTopOf="@id/button_retry"
+            app:layout_constraintEnd_toEndOf="@id/button_retry"
+            app:layout_constraintStart_toStartOf="@id/button_retry" />
+
+        <Button
+            android:id="@+id/button_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Retry"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/no_result_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Results Found"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/totalResultsTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="@color/white"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/fragment_home_xml_constraintlayout_scene">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/search_layout"
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:alpha="0"
+            android:layout_margin="30dp"
+            android:background="@drawable/search_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/search_edt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:maxLength="25"
+                android:inputType="text"
+                android:maxLines="1"
+                android:imeOptions="actionSearch"
+                android:paddingStart="20dp"
+                android:paddingEnd="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/text2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/clear_img"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/clear_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="55dp"
+                android:alpha="0"
+                android:src="@drawable/ic_baseline_clear_24"
+                app:layout_constraintBottom_toBottomOf="@id/search_edt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/search_edt"
+                app:layout_constraintTop_toTopOf="@id/search_edt" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/search_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:clickable="true"
+            android:elevation="10dp"
+            app:cardBackgroundColor="@color/red"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:cardMaxElevation="10dp"
+            app:layout_constraintStart_toStartOf="@id/search_layout"
+            app:layout_constraintTop_toTopOf="@id/search_layout"
+            app:layout_constraintBottom_toBottomOf="@id/search_layout"
+            app:rippleColor="@color/white">
+
+            <ImageView
+                android:id="@+id/search_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_search_24"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/arrowImG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:src="@drawable/ic_baseline_keyboard_double_arrow_left_24" />
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <View
+            android:id="@+id/filter_bg"
+            android:background="@drawable/filter_bg"
+            android:layout_width="0dp"
+            android:alpha="0"
+            app:layout_constraintStart_toStartOf="@id/quality_btn"
+            app:layout_constraintEnd_toEndOf="@id/orientation_tv"
+            app:layout_constraintBottom_toBottomOf="@id/filterBTN"
+            android:layout_height="1dp"/>
+
+        <TextView
+            android:id="@+id/quality_tv"
+            android:text="quality"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:alpha="0"
+            app:layout_constraintStart_toEndOf="@id/quality_btn"
+            app:layout_constraintTop_toTopOf="@id/quality_btn"
+            app:layout_constraintBottom_toBottomOf="@id/quality_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/quality_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:clickable="true"
+            android:elevation="10dp"
+            app:cardBackgroundColor="@color/red"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:cardMaxElevation="10dp"
+            app:layout_constraintStart_toStartOf="@id/filterBTN"
+            app:layout_constraintBottom_toBottomOf="@id/filterBTN"
+            app:layout_constraintEnd_toEndOf="@id/filterBTN"
+            app:rippleColor="@color/white">
+
+            <ImageView
+                android:id="@+id/hd_btn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_hd_24"
+                android:visibility="gone"
+                app:tint="@color/white" />
+
+            <ImageView
+                android:id="@+id/sd_btn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                android:src="@drawable/ic_baseline_sd_24"
+                app:tint="@color/white" />
+
+
+        </com.google.android.material.card.MaterialCardView>
+        <TextView
+            android:id="@+id/orientation_tv"
+            android:text="orientation"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:alpha="0"
+            app:layout_constraintStart_toEndOf="@id/orientation_btn"
+            app:layout_constraintTop_toTopOf="@id/orientation_btn"
+            app:layout_constraintBottom_toBottomOf="@id/orientation_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/orientation_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="@id/filterBTN"
+            app:layout_constraintBottom_toBottomOf="@id/filterBTN"
+            app:layout_constraintEnd_toEndOf="@id/filterBTN"
+            android:clickable="true"
+            android:elevation="10dp"
+            app:cardBackgroundColor="@color/red"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:cardMaxElevation="10dp"
+            app:rippleColor="@color/white">
+
+            <ImageView
+                android:id="@+id/portrait_img"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_stay_current_portrait_24"
+                android:visibility="gone"
+                app:tint="@color/white" />
+
+            <ImageView
+                android:id="@+id/all_mix_orient"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_all_inclusive_24"
+                android:visibility="visible"
+                app:tint="@color/white" />
+            <ImageView
+                android:id="@+id/land_img"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:rotation="-90"
+                android:src="@drawable/ic_baseline_stay_current_portrait_24"
+                app:tint="@color/white" />
+
+
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/filterBTN"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:clickable="true"
+            android:elevation="10dp"
+            app:cardBackgroundColor="@color/red"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:cardMaxElevation="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:rippleColor="@color/white">
+
+            <ImageView
+                android:id="@+id/filterIMG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_filter_list_24"
+                android:visibility="visible" />
+
+
+            <ImageView
+                android:id="@+id/cancelFilterIMG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:src="@drawable/ic_baseline_clear_24" />
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+
+</FrameLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end_search"
+        motion:constraintSetStart="@id/start"
+        motion:duration="600">
+       <KeyFrameSet>
+       </KeyFrameSet>
+        <OnClick motion:targetId="@+id/search_btn" />
+    </Transition>
+
+    <Transition
+        motion:constraintSetEnd="@+id/end_filter"
+        motion:constraintSetStart="@id/start"
+        motion:duration="600">
+        <KeyFrameSet>
+        </KeyFrameSet>
+        <OnClick motion:targetId="@+id/filterBTN" />
+    </Transition>
+
+
+    <ConstraintSet android:id="@+id/start">
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end_search">
+        <Constraint
+            android:id="@+id/search_layout"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:alpha="1"
+            android:layout_marginTop="30dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"/>
+        <Constraint
+            android:id="@+id/search_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            motion:layout_constraintEnd_toEndOf="@id/search_layout"
+            motion:layout_constraintTop_toTopOf="@id/search_layout"
+            motion:layout_constraintBottom_toBottomOf="@id/search_layout"
+            android:layout_marginEnd="10dp"
+            />
+
+    </ConstraintSet>
+
+
+    <ConstraintSet android:id="@+id/end_filter">
+        <Constraint
+            android:id="@+id/orientation_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
+            motion:layout_constraintStart_toStartOf="@id/filterBTN"
+            motion:layout_constraintBottom_toTopOf="@id/filterBTN"
+            motion:layout_constraintEnd_toEndOf="@id/filterBTN"/>
+        <Constraint
+            android:id="@+id/quality_tv"
+            android:alpha="1"
+            android:layout_marginStart="10dp"
+            motion:layout_constraintStart_toEndOf="@id/quality_btn"
+            motion:layout_constraintTop_toTopOf="@id/quality_btn"
+            motion:layout_constraintBottom_toBottomOf="@id/quality_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Constraint
+            android:id="@+id/orientation_tv"
+            android:alpha="1"
+            android:layout_marginStart="10dp"
+            motion:layout_constraintStart_toEndOf="@id/orientation_btn"
+            motion:layout_constraintTop_toTopOf="@id/orientation_btn"
+            motion:layout_constraintBottom_toBottomOf="@id/orientation_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Constraint
+            android:id="@+id/quality_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
+            motion:layout_constraintStart_toStartOf="@id/orientation_btn"
+            motion:layout_constraintBottom_toTopOf="@id/orientation_btn"
+            motion:layout_constraintEnd_toEndOf="@id/orientation_btn"/>
+
+        <Constraint
+            android:id="@+id/filter_bg"
+            android:layout_width="0dp"
+            android:alpha="1"
+            motion:layout_constraintStart_toStartOf="@id/quality_btn"
+            motion:layout_constraintEnd_toEndOf="@id/orientation_tv"
+            motion:layout_constraintTop_toTopOf="@id/quality_btn"
+            motion:layout_constraintBottom_toBottomOf="@id/filterBTN"
+            android:layout_height="0dp"/>
+    </ConstraintSet>
+
+
+</MotionScene>
